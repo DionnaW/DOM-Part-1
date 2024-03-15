@@ -60,6 +60,16 @@ aEl.textContent = link.text;
 topMenuEl.prepend(aEl);  //had to google/append put the array to the side of pg/'PREPEND' puts at top
 }
 
+//cache 'sub-menu to variable names subMenuEl
+const subMenuEl = document.getElementById('sub-menu');
+console.log(subMenuEl);
+
+//changing 'sub-menu height b.ground color, css property
+subMenuEl.style.height = '100%';
+subMenuEl.style.backgroundColor = '#3da4ab';
+subMenuEl.classList.add('flex-around');
+subMenuEl.style.position = 'absolute';
+subMenuEl.style.top ='0';
 
 
 
