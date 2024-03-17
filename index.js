@@ -19,7 +19,7 @@ var menuLinks = [
 
 //iterate over menuLinks array and for each 'link' object
 // for (var i = 0; i < menuLinks.length; i++) {
-    // var link = menuLinks[i];
+    // var link = menuLinks[i];                   
     
 //create an <a> element
 // var aEl = document.createElement('a');
@@ -55,26 +55,28 @@ topMenuEl.style.backgroundColor = '#0e9aa7';
 topMenuEl.classList.add('flex-around');
 
 //iterate over menuLinks array and for each 'link' object
-// for (var i = 0; i < menuLinks.length; i++) {
-    // var link = menuLinks[i];
+for (var i = 0; i < menuLinks.length; i++) {
+    var link = menuLinks[i];
     
 //create an <a> element
-// var aEl = document.createElement('a');
+var aEl = document.createElement('a');
 
 //add href attribute w/it's value of the href property of the 'link' object
-// aEl.href = link.href;
+aEl.href = link.href;
 
 //set new element content to the value of the text property of the 'link' object
-// aEl.textContent = link.text;
+aEl.textContent = link.text;
 
 //append new element to the topMenuEl
-// topMenuEl.prepend(aEl);  //had to google/append put the array to the side of pg/'PREPEND' puts at top
-// }
+topMenuEl.prepend(aEl);  //had to google/append put the array to the side of pg/'PREPEND' puts at top
+}
+
+//Part 2 of Lab
 
 //cache 'sub-menu to variable names to subMenuEl
 const subMenuEl = document.getElementById('sub-menu');
 console.log(subMenuEl);
-
+// 
 //changing 'sub-menu height b.ground color, css property
 subMenuEl.style.height = '100%';
 subMenuEl.style.backgroundColor = '#3da4ab';
@@ -84,20 +86,29 @@ subMenuEl.style.top = '0';
 
 //cache all <a> elements in the subMenuEl in a var named topMenuLinks
 const topMenuLinks = topMenuEl.querySelectorAll('a');
-console.log('topMenuLinks');
+
+//modifications for submenu
+// const topMenuEl = document.querySelector('#topMenu');
+// const subMenuEl = topMenuEl.querySelector('.sub-menu');
+// let cachedLinkwithSubLinks = null;
 
 //attach 'click' event listener to topMenuEl
-// topMenuEl.addEventListener('click', function(evt) {
-  // evt.preventDefault();
+topMenuEl.addEventListener('click', function(evt) {
+  evt.preventDefault();
 
-  // if (evt.target.tagName !== 'A') {
-    // console.log(evt.target.textContent);
-  // }
-// })
-  // ;
+  if (evt.target.tagName === topMenuEl) {  //argument 1
+    console.log('not a link')
+  } else {
+    console.log(evt.target);
+  }
 
+  const clicked = evt.target;              //argument 2
+  clicked.classList.toggle('active');
 
-
-
-
+  topMenuLinks.forEach(link => {
+    if (link !== evt.target) {             //argument 3
+      link.classList.remove('active')
+    }
+  })
+});
 
