@@ -83,11 +83,18 @@ subMenuEl.style.position = 'absolute';
 subMenuEl.style.top = '0';
 
 //cache all <a> elements in the subMenuEl in a var named topMenuLinks
-var topMenuLinks =document.getElementById('topMenuEl');
+const topMenuLinks = topMenuEl.querySelectorAll('a');
+console.log('topMenuLinks');
 
-//new variable name
-var topMenuLinks = topMenuEl.querySelectorAll('a');
+//attach 'click' event listener to topMenuEl
+// topMenuEl.addEventListener('click', function(evt) {
+  // evt.preventDefault();
 
+  // if (evt.target.tagName !== 'A') {
+    // console.log(evt.target.textContent);
+  // }
+// })
+  // ;
 
 
 
