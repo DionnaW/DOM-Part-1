@@ -46,8 +46,8 @@ mainEl.style.textAlign = "center";
 mainEl.classList.add("flex-ctr");
 
 //cache <nav id ="top-menu"> element to topMenuEl
-const topMenuEl = document.getElementById('top-menu');  //had to use getElementById; wouldn't wrk w/querySelect
-console.log(topMenuEl);
+// const topMenuEl = document.getElementById('top-menu');  //had to use getElementById; wouldn't wrk w/querySelect
+// console.log(topMenuEl);
 
 //change height, b.ground color, & flex-around
 topMenuEl.style.height = '100%';
@@ -74,8 +74,8 @@ topMenuEl.prepend(aEl);  //had to google/append put the array to the side of pg/
 //Part 2 of Lab
 
 //cache 'sub-menu to variable names to subMenuEl
-const subMenuEl = document.getElementById('sub-menu');
-console.log(subMenuEl);
+// const subMenuEl = document.getElementById('sub-menu');
+// console.log(subMenuEl);
 // 
 //changing 'sub-menu height b.ground color, css property
 subMenuEl.style.height = '100%';
@@ -84,19 +84,21 @@ subMenuEl.classList.add('flex-around');
 subMenuEl.style.position = 'absolute';
 subMenuEl.style.top = '0';
 
+
+
 //cache all <a> elements in the subMenuEl in a var named topMenuLinks
 const topMenuLinks = topMenuEl.querySelectorAll('a');
 
 //modifications for submenu
 // const topMenuEl = document.querySelector('#topMenu');
-// const subMenuEl = topMenuEl.querySelector('.sub-menu');
-// let cachedLinkwithSubLinks = null;
+// const subMenuEl = topMenuEl.querySelector('#sub-menu');
 
 //attach 'click' event listener to topMenuEl
 topMenuEl.addEventListener('click', function(evt) {
   evt.preventDefault();
 
-  if (evt.target.tagName === topMenuEl) {  //argument 1
+//first interactions for top menu
+  if (evt.target === topMenuEl) {  //argument 1
     console.log('not a link')
   } else {
     console.log(evt.target);
@@ -112,3 +114,29 @@ topMenuEl.addEventListener('click', function(evt) {
   })
 });
 
+//2nd interactions modifications for sunmebu
+  // if (evt.target.tagName === topMenuEl) {
+    // const clicked = evt.target;
+
+    //checking if 'clicked' link has subtitles
+    // const linkObject = menuLinks.find(link => link.text === clicked.textContent);
+
+    // if (linkObject && linkObject.subLinks) {
+      // subMenuEl.style.top = '100%';
+      // cachelinkwithSubLinks = linkObject;
+    // } else {
+      // subMenuEl.style.top = '0';
+      // cachelinkwithSubLinks = null;
+    // }
+
+    // clicked.classList.toggle('active');
+
+    // topMenuLinks.forEach(link => {
+      // if (link !== clicked) {
+        // link.classList.remove('active');
+      // }
+    // });
+  // }   else{
+    // console.log('not a link');
+  // }
+// });
