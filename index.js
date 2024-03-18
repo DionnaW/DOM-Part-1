@@ -46,8 +46,8 @@ mainEl.style.textAlign = "center";
 mainEl.classList.add("flex-ctr");
 
 //cache <nav id ="top-menu"> element to topMenuEl
-// const topMenuEl = document.getElementById('top-menu');  //had to use getElementById; wouldn't wrk w/querySelect
-// console.log(topMenuEl);
+const topMenuEl = document.getElementById('top-menu');  //had to use getElementById; wouldn't wrk w/querySelect
+console.log(topMenuEl);
 
 //change height, b.ground color, & flex-around
 topMenuEl.style.height = '100%';
@@ -74,8 +74,8 @@ topMenuEl.prepend(aEl);  //had to google/append put the array to the side of pg/
 //Part 2 of Lab
 
 //cache 'sub-menu to variable names to subMenuEl
-// const subMenuEl = document.getElementById('sub-menu');
-// console.log(subMenuEl);
+const subMenuEl = document.getElementById('sub-menu');
+console.log(subMenuEl);
 // 
 //changing 'sub-menu height b.ground color, css property
 subMenuEl.style.height = '100%';
@@ -114,29 +114,30 @@ topMenuEl.addEventListener('click', function(evt) {
   })
 });
 
-//2nd interactions modifications for sunmebu
-  // if (evt.target.tagName === topMenuEl) {
-    // const clicked = evt.target;
+function subMenu(subMenuLinks) {
+  subMenuEl.innerHTML = '';
+  subMenuLinks.forEach((link) => {
+    const subMenuAnchor = document.createElement('a');
+    subMenuAnchor.setAttribute('href', link.href);
+    subMenuAnchor.textContent = link.text;
+    subMenuEl.appendChild(subMenuAnchor);
+  });
+}
+topMenuEl.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (e.target.tagName !== 'A') return;
 
-    //checking if 'clicked' link has subtitles
-    // const linkObject = menuLinks.find(link => link.text === clicked.textContent);
+  const clickedLink = menuLinks.find(
+    (link) => link.text === e.target.textContent
+  );
+  topMenuLinks.forEach((link) => link.classList.remove('active'));
+  e.target.classList.toggle('active');
 
-    // if (linkObject && linkObject.subLinks) {
-      // subMenuEl.style.top = '100%';
-      // cachelinkwithSubLinks = linkObject;
-    // } else {
-      // subMenuEl.style.top = '0';
-      // cachelinkwithSubLinks = null;
-    // }
+  if (clickedLink && clickedLink.subLinks) {
+    subMenu(clickedLink.subLinks);
 
-    // clicked.classList.toggle('active');
-
-    // topMenuLinks.forEach(link => {
-      // if (link !== clicked) {
-        // link.classList.remove('active');
-      // }
-    // });
-  // }   else{
-    // console.log('not a link');
-  // }
-// });
+    subMenuEl.style.top = e.target.classList.contains('active') ? '100%' : '0';
+  } else {
+    subMenuEl.style.top = '0';
+  }
+});
