@@ -21,7 +21,7 @@ var menuLinks = [
 // for (var i = 0; i < menuLinks.length; i++) {
     // var link = menuLinks[i];                   
     
-//create an <a> element
+// create an <a> element
 // var aEl = document.createElement('a');
 
 //add href attribute w/it's value of the href property of the 'link' object
